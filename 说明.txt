@@ -1,0 +1,17 @@
+Spring boot内嵌tomcat
+如何启动？
+Tomcat tomcat = new Tomcat();
+Tomcat.start();
+
+如何把spring mvc的技术整合进来？
+
+DispatcherServlet  在spring 2.5之前，需要在web.xml文件里面进行配置。
+<servlet> </servlet> 或者servlet3的时候使用@webServlet进行配置。
+
+WebApplicationInitializer是在什么时候执行的呢？
+
+Web容器加载一个项目的时候，如果你这个项目当中提供了一个接口servletContainerInitializer，并且配置了这个接口（那需要在项目里面进行配置：在webapp下面的mate-inf下面新建文件，文件里需要填写要加载的servletContainerInitializer
+），那么就会调用这个接口的onstartup()。然后调用onstartup的时候会传入两个参数，其中一个Set<Class<?>> set, ServletContext servletContext。这个类回去加载实现了WebApplicationInitializer接口的实现类。
+
+
+详细的代码请参考我的github地址：https://github.com/upanhua/spring-boot
